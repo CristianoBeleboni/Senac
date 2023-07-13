@@ -15,6 +15,9 @@ public class PokeAPI {
         String nomePokemon = null;
         String idMovimento = null;
         String idLocal = null;
+        String idEvolucoes = null;
+        String idIntem = null;
+        String idJogo = null;
         String escolhaAPI1 = null;
         String escolhaAPI2 = null;
 
@@ -24,7 +27,11 @@ public class PokeAPI {
             System.out.println("Qual item você deseja consultar" +
                     "na API do Pokemón?" +
                     "\n1-Pokemóns" +
-                    "\n2-Movimentos");
+                    "\n2-Movimentos" +
+                    "\n3-Local" +
+                    "\n4-Evolucao "+
+                    "\n5-Item"+
+                    "\n6-Jogo");
             Integer escolha = sc.nextInt();
             if (escolha == 1) {
                 //Escolher o Pokemon
@@ -39,9 +46,37 @@ public class PokeAPI {
                                 "Escreva o ID do Movimento desejado: ");
                 escolhaAPI2 = idMovimento;
                 escolhaAPI1 = "move";
+            }else if (escolha == 3) {
+                //Escolher o Pokemon
+                idLocal =
+                        JOptionPane.showInputDialog("" +
+                                "Escreva o local desejado: ");
+                escolhaAPI2 = idLocal;
+                escolhaAPI1 = "location";
+            }else if (escolha == 4) {
+                    //Escolher o Pokemon
+                    idEvolucoes =
+                            JOptionPane.showInputDialog("" +
+                                    "Escreva o nome da evolucoes desejado: ");
+                    escolhaAPI2 = idEvolucoes;
+                    escolhaAPI1 = "evolutions";
+            }else if (escolha == 5) {
+                //Escolher o Pokemon
+                idIntem =
+                        JOptionPane.showInputDialog("" +
+                                "Escreva o item desejado: ");
+                escolhaAPI2 = idIntem;
+                escolhaAPI1 = "item";
+            }else if (escolha == 6) {
+                //Escolher o Pokemon
+                idJogo =
+                        JOptionPane.showInputDialog("" +
+                                "Escreva o jogos desejado: ");
+                escolhaAPI2 = idJogo;
+                escolhaAPI1 = "game";
             }
             // URL da API do PokeAPI
-            URL url = new URL("https://pokeapi.co/api/v2/" + escolhaAPI1 + "/" +
+            URL url = new URL("https://pokeapi.co/api/v2" + escolhaAPI1 + "/" +
                     escolhaAPI2);
             // Abrir conexão HTTP
             HttpURLConnection connection = (HttpURLConnection)
@@ -81,8 +116,8 @@ public class PokeAPI {
 
             // Fechar a conexão
             connection.disconnect();
-        } catch (IOException e) {
+    }catch (IOException e) {
             e.printStackTrace();
         }
-    }
+}
 }
